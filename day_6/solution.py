@@ -25,7 +25,7 @@ class TuningTrouble:
                 break
 
     def check_for_marker(self, signal_section) -> Optional[int]:
-        """Check each 4-character section of signal for a set of unique letters."""
+        """Check each section of signal for a set of unique letters."""
         if not len(set(signal_section)) == self.char_count:
             self.signal_iteration += 1
             return None
