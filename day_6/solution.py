@@ -10,21 +10,21 @@ class TuningTrouble:
         self.signal_iteration: int = 0
         self.signal_marker: Optional[int] = None
 
-    def read_puzzle_input(self):
+    def read_puzzle_input(self) -> None:
         """Read in the contents of the puzzle input."""
         contents: list[str] = open("puzzle.txt", "r").readlines()
         self.signal = contents[0]
 
-    def check_signal(self):
+    def check_signal(self) -> None:
         """Iterate through the signal in groups of 4 characters."""
         for i, value in enumerate(self.signal):
-            self.signal_marker: Optional[int] = self.check_for_marker(
+            self.signal_marker = self.check_for_marker(
                 self.signal[i : i + self.char_count]
             )
             if self.signal_marker is not None:
                 break
 
-    def check_for_marker(self, signal_section):
+    def check_for_marker(self, signal_section) -> Optional[int]:
         """Check each 4-character section of signal for a set of unique letters."""
         if not len(set(signal_section)) == self.char_count:
             self.signal_iteration += 1
@@ -34,7 +34,7 @@ class TuningTrouble:
 
 
 def part1():
-    """TODO"""
+    """Check for the signal marker per every 4 characters."""
     tt = TuningTrouble(4)
     tt.read_puzzle_input()
     tt.check_signal()
@@ -42,7 +42,7 @@ def part1():
 
 
 def part2():
-    """TODO"""
+    """Check for the signal marker per every 14 characters."""
     tt = TuningTrouble(14)
     tt.read_puzzle_input()
     tt.check_signal()
